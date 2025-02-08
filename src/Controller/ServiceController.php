@@ -15,4 +15,9 @@ final class ServiceController extends AbstractController
             'name' => $name
         ]);
     }
+    #[Route('/redirect-home', name: 'redirect_home')]
+    public function goToIndex(): Response
+    {
+         return $this->redirectToRoute('home');
+    }
 }

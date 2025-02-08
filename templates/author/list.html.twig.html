@@ -1,0 +1,18 @@
+{% if authors is not empty %}
+    <h2>Authors List (Total: {{ authors|length }})</h2>
+    <ul>
+        {% set totalBooks = 0 %}
+        {% for author in authors %}
+            <li>
+                <img src="{{ author.picture }}" alt="{{ author.username }}" width="100">
+                <p>{{ author.username|upper }} (Books: {{ author.nb_books }})</p>
+                <p>Email: {{ author.email }}</p>
+                <p><a href="{{ path('show_author', { 'name': author.username }) }}">Details</a></p>
+                {% set totalBooks = totalBooks + author.nb_books %}
+            </li>
+        {% endfor %}
+    </ul>
+    <p>Total Books: {{ totalBooks }}</p>
+{% else %}
+    <p>No authors available.</p>
+{% endif %}
